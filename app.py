@@ -21,7 +21,7 @@ app = gr.Blocks()
 file_transcribe = gr.Interface(
     fn=transcribe_speech,
     inputs=gr.Audio(sources=["upload"], type="filepath"),
-    outputs=gr.outputs.Textbox(),
+    outputs="text",
 )
 
 
