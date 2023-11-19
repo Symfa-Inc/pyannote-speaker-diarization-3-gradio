@@ -35,7 +35,7 @@ file_transcribe = gr.Interface(
     fn=transcribe_speech,
     inputs=gr.Audio(sources=["upload"], type="filepath"),
     outputs="text",
-    auto_submit=True
+    live=True
 )
 
 
