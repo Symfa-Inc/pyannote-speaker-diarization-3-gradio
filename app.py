@@ -35,6 +35,7 @@ file_transcribe = gr.Interface(
     fn=transcribe_speech,
     inputs=gr.Audio(sources=["upload"], type="filepath"),
     outputs="text",
+    auto_submit=True
 )
 
 
@@ -44,4 +45,4 @@ with app:
         ["Transcribe Audio File"],
     )
 
-app.launch(debug=True)
+app.launch(debug=True, share=True)
