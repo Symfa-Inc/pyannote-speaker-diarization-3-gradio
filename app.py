@@ -20,7 +20,7 @@ app = gr.Blocks()
 
 file_transcribe = gr.Interface(
     fn=transcribe_speech,
-    inputs=gr.Audio(source="upload", type="filepath"),
+    inputs=gr.Audio(sources=["upload"], type="filepath"),
     outputs=gr.outputs.Textbox(),
 )
 
