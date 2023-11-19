@@ -17,7 +17,7 @@ pipeline.to(torch.device("cuda"))
 def transcribe_speech(filepath):
     start_time = time.time()
 
-    waveform, sample_rate = torchaudio.load("audio.wav")
+    waveform, sample_rate = torchaudio.load(filepath)
     output_text = pipeline({"waveform": waveform, "sample_rate": sample_rate})
 
     end_time = time.time()  # End time
