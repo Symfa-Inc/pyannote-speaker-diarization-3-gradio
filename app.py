@@ -12,7 +12,7 @@ pipeline = Pipeline.from_pretrained(
   "pyannote/speaker-diarization-3.1",
   use_auth_token=read_key)
 
-# pipeline.to(torch.device("cuda"))
+pipeline.to(torch.device("cuda"))
 
 def transcribe_speech(filepath):
     start_time = time.time()
