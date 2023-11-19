@@ -31,5 +31,5 @@ with app:
         ["Transcribe Audio File"],
     )
 
-app.launch()
+app.launch(debug=True)
 gr.load("models/pyannote/speaker-diarization-3.1", hf_token=read_key).launch()
