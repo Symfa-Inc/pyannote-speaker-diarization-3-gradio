@@ -2,6 +2,7 @@ import gradio as gr
 import torch
 import os
 from pyannote.audio import Pipeline
+import time
 
 
 read_key = os.environ.get('HF_TOKEN', None)
@@ -13,7 +14,17 @@ pipeline = Pipeline.from_pretrained(
 pipeline.to(torch.device("cuda"))
 
 def transcribe_speech(filepath):
-    output = pipeline(filepath)
+    start_time = time.time()  # Start time
+
+    output_text = pipeline(filepath)
+
+    end_time = time.time()  # End time
+    processing_time = end_time - start_time  # Calculate processing time
+
+    result = f"\nProcessing Time: {processing_time:.2f} seconds\n{output_text}"
+    return result
+
+
     return output
 
 app = gr.Blocks()
