@@ -3,6 +3,7 @@ import torch
 import os
 from pyannote.audio import Pipeline
 import time
+import torchaudio
 
 
 read_key = os.environ.get('HF_TOKEN', None)
@@ -14,9 +15,10 @@ pipeline = Pipeline.from_pretrained(
 pipeline.to(torch.device("cuda"))
 
 def transcribe_speech(filepath):
-    start_time = time.time()  # Start time
+    start_time = time.time()
 
-    output_text = pipeline(filepath)
+    waveform, sample_rate = torchaudio.load("audio.wav")
+    output_text = pipeline({"waveform": waveform, "sample_rate": sample_rate})
 
     end_time = time.time()  # End time
     processing_time = end_time - start_time  # Calculate processing time
